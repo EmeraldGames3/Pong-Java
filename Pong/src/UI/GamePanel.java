@@ -2,6 +2,7 @@ package UI;
 
 import GameObjects.Ball;
 import GameObjects.Paddle;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -59,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
         paddle2.draw(g);
         ball.draw(g);
         score.draw(g);
-        Toolkit.getDefaultToolkit().sync(); // I forgot to add this line of code in the video, it helps with the animation
+        Toolkit.getDefaultToolkit().sync();
 
     }
 
@@ -70,7 +71,6 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void checkCollision() {
-
         //bounce ball off top & bottom window edges
         if (ball.y <= 0) {
             ball.setYDirection(-ball.yVelocity);
@@ -81,9 +81,9 @@ public class GamePanel extends JPanel implements Runnable {
         //bounce ball off paddles
         if (ball.intersects(paddle1)) {
             ball.xVelocity = Math.abs(ball.xVelocity);
-            ball.xVelocity++; //optional for more difficulty
+            ball.xVelocity++;
             if (ball.yVelocity > 0)
-                ball.yVelocity++; //optional for more difficulty
+                ball.yVelocity++;
             else
                 ball.yVelocity--;
             ball.setXDirection(ball.xVelocity);
@@ -91,9 +91,9 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (ball.intersects(paddle2)) {
             ball.xVelocity = Math.abs(ball.xVelocity);
-            ball.xVelocity++; //optional for more difficulty
+            ball.xVelocity++;
             if (ball.yVelocity > 0)
-                ball.yVelocity++; //optional for more difficulty
+                ball.yVelocity++;
             else
                 ball.yVelocity--;
             ball.setXDirection(-ball.xVelocity);
@@ -123,6 +123,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    @SuppressWarnings("All")
     public void run() {
         //game loop
         long lastTime = System.nanoTime();
